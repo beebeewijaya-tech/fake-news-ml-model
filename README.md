@@ -18,6 +18,50 @@ This project focuses on developing a classification model for identifying fake n
   fastapi dev main.py
 ```
 
+## CURL
+
+Successful case
+``` bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "After 20 years, the post-tsunami generation stays vigilant for future disasters",
+  "text": "On Dec. 26, 2004, a powerful 9.1-magnitude earthquake, off the coast of the Indonesian island of Sumatra, triggered a tsunami that killed around 230,000 people across a dozen countries, reaching as far as East Africa. Some 160,000 of those were in Aceh, at the northwestern tip of Indonesia."
+}'
+
+----
+
+Response Body
+{
+  "message": "Successful predicting",
+  "res": true
+}
+```
+
+
+Failed case
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "Draft Senate Iran legislation sets tough new U.S. terms for deal",
+  "text": "A cow eating a snake with a little bit of problem when US terms is not good"
+}'
+
+-----
+	
+Response body
+{
+  "message": "Successful predicting",
+  "res": false
+}
+```
+
+
 
 ## Methodology
 
